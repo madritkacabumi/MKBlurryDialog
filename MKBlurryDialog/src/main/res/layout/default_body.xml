@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="340dp"
+    android:minWidth="340dp"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="5dp"
+    android:elevation="10dp"
+    android:clickable="true"
+    android:id="@+id/bodyContent"
+    >
+
+    <TextView
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="#fff"
+        android:text="Simple layout title"
+        android:background="#007814"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="18sp"
+        android:maxLines="1"
+        android:lines="1"
+        android:ellipsize="end"
+        android:id="@+id/title"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:text="you can inflate a resource layout to the dialog containing only the dialog and add it to the MKBlurryDialog"
+        android:padding="10dp"
+        android:id="@+id/messageBody"
+        android:minHeight="100dp"
+        />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:text="close"
+        android:textAllCaps="false"
+        android:id="@+id/closeBtn"
+        />
+</LinearLayout>
