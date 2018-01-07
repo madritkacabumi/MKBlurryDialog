@@ -108,7 +108,10 @@ dialog.setRadius(15f);
 ```
 
 ### Screen
-![alt text](https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png){:height="50%" width="50%"}  ![alt text](https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image2.png=250x250 ){:height="50%" width="50%"}
+
+<img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png" width="150" height="150">
+
+
 
 
 ### Atributes or Customisation
