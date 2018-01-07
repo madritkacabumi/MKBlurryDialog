@@ -47,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         dialog = new BlurryDialog(this);
         dialog.setCancelableOutSide(true)
-                .setLoop(2)
-                .setProportion(3)
+                .setLoop(5)
+                .setProportion(4)
                 .setAnimated(true)
-                .setRadius(15f)
+                .setRadius(20f)
                 .setTitle("your title")
                 .setMessage("Hello World");
 
