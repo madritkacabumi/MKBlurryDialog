@@ -109,7 +109,7 @@ dialog.setRadius(15f);
 
 ### Screen
 
-<img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png" width="150" height="150">
+<img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png" width="360" height="640">
 
 
 
