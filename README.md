@@ -46,7 +46,7 @@ android {
 Step 2. Add the dependency in build.gradle (app level) :
 
 ```
-compile 'com.github.devMadrit:MKBlurryDialog:1.2'
+compile 'com.github.devMadrit:MKBlurryDialog:1.3'
 ```
 
 
@@ -124,7 +124,7 @@ dialog.setRadius(15f);
                 .setProportion(3)
                 .setAnimated(true)
                 .setRadius(15f)
-                .setBodyView(R.layout.other_body);
+                .setBodyView(R.layout.other_body); //add here the layout id or use  : dialog.setBodyView(View yourCustomView);
 
 
         TextView title = (TextView) dialog.getBodyView().findViewById(R.id.custom_layout_title);
@@ -204,7 +204,9 @@ Use other moethods
 
 ## Versioning
 
-Version 1.2 // first release
+Version 1.0 // first release
+Version 1.2 // updated readme
+Version 1.3 // updated readme
 
 ## Authors
 
