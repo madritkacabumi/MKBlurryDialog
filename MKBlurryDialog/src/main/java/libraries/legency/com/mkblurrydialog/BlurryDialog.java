@@ -357,6 +357,10 @@ public class BlurryDialog {
         return bodyContainer;
     }
 
+    public ImageView getBackgroundImage(){
+        return backgroundImage;
+    }
+
     public int getLoop() {
         return mLoop;
     }

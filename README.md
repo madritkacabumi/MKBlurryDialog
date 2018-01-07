@@ -46,10 +46,9 @@ android {
 Step 2. Add the dependency in build.gradle (app level) :
 
 ```
-compile 'com.github.devMadrit:MKBlurryDialog:1.0'
+compile 'com.github.devMadrit:MKBlurryDialog:1.2'
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Using
 
@@ -103,7 +102,10 @@ dialog.setRadius(15f);
 5) Default body
 
 ```
-// the dialog/alert dialog body comes with a default layout that has a title , message, and an 'ok' button.
+// the dialog/alert dialog body comes with a default layout that has a title , message, and an 'ok' 
+// button. You can customise the title and message , and the ok button will dismiss the dialog
+	.setTitle("your title")
+	.setMessage("Hello World");
 
 ```
 
@@ -111,101 +113,98 @@ dialog.setRadius(15f);
 
 <img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png" width="360" height="640"> ---- <img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image2.png" width="360" height="640">
 
-
-
-
-### Atributes or Customisation
-
-It is a good idea that width and height are equal , but it is not fully required 
-Here you have a list of attributes to add to xml. The same attributes avaible in setters and getters through java code
+6) Custom Body
 
 ```
-    <declare-styleable name="MKAnalogClockView">
-        <attr name="clockType" format="enum">
-            <enum name="analog" value="0"/>
-            <enum name="digital" value="1"/>
-        </attr>
+//  you can add a custom view as the body of your dialog and reference its elements
 
-        <!--move hands always based to time , for example move seconds smoothly each milisecond-->
-        <attr name="alwaysMovingHands" format="boolean"/>
+       Dialog dialog = new BlurryDialog(this);
+        dialog.setCancelableOutSide(true)
+                .setLoop(2)
+                .setProportion(3)
+                .setAnimated(true)
+                .setRadius(15f)
+                .setBodyView(R.layout.other_body);
+
+
+        TextView title = (TextView) dialog.getBodyView().findViewById(R.id.custom_layout_title);
+        TextView message = (TextView) dialog.getBodyView().findViewById(R.id.custom_layout_message);
+
+        title.setText("My custom layout Title");
+        message.setText("My custom layout Message");
+
+        Button button = dialog.getBodyView().findViewById(R.id.closeBtn2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //your custom button click
+
+                //example
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getBacgroundImage().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // what happens when you click out side the body layout
+
+            }
+        });
+
+        dialog.show();
+
+```
+### Screen
+
+<img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png" width="360" height="640"> ---- <img src="https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image3.png" width="360" height="640">
 
 
 
-        <!--analog clock circle customisation -->
-        <attr name="circleEnabled" format="boolean"/> 	<!--if you want the circle around the clock -->
-        <attr name="circleColor" format="color"/>  		<!--Color of circle  -->
-        <attr name="circleStroke" format="integer"/>	<!--Stroke size  -->
-        <attr name="circlePaintStyle" format="enum">	<!--Type of paint  -->
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
+### Utils methods
 
-        <!--center of clock-->
-        <attr name="centerEnabled" format="boolean"/>
-        <attr name="centerColor" format="color"/>
-        <attr name="centerSize" format="integer"/>
-        <attr name="centerPaintStyle" format="enum">
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
+Use other moethods 
 
-        <!-- numbers around the clock, -->
-        <attr name="numeralsEnabled" format="boolean"/>
-        <attr name="numeralsFontSize" format="dimension"/>
-        <attr name="numeralsColor" format="color"/>
-        <attr name="numeralsSpacingToCircle" format="dimension"/> <!-- distance from the circle for numbers-->
+```
+  //getters
 
-        <!--Seconds line decorations, adding lines around the clock circle (no matter if the circle is enabled) to decorate seconds-->
-        <attr name="secLinesDecorationEnabled" format="boolean"/>
-        <attr name="secLinesDecorationHeight" format="dimension"/>
-        <attr name="secLineDecorationColor" format="color"/>
-        <attr name="secLineDecorationPaintStyle" format="enum">
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
-        <attr name="secLineStroke" format="integer"/>
+  dialog.getBodyView(); (returns View) // get the body content view
 
-        <!--------------------HANDS----------------------->
-        <!-- Hour Hand-->
-        <attr name="handHourPadding" format="dimension"/> <!--Padding or distance from clock cirle (no matter if the circle is enabled) to the hand-->
-        <attr name="handHourColor" format="color"/>
-        <attr name="handHourPaintStyle" format="enum">
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
-        <attr name="handHourStroke" format="integer"/>
+  dialog.getFullBodyView(); (returns View) // get the all attached view of BlurryDialog, including the background image that is blurried
 
-        <!-- Minutes Hand-->
-        <attr name="handMinutesPadding" format="dimension"/>
-        <attr name="handMinutesColor" format="color"/>
-        <attr name="handMinutesPaintStyle" format="enum">
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
-        <attr name="handMinutesStroke" format="integer"/>
+  dialog.getBodyContainer(); (returns ViewGroup) // get the body content container (instance of RelativeLayout) that contains the default layout or your custom layout
 
-        <!-- Seconds Hand-->
-        <attr name="secondsEnabled" format="boolean"/>
-        <attr name="handSecondsPadding" format="dimension"/>
-        <attr name="handSecondsColor" format="color"/>
-        <attr name="handSecondsPaintStyle" format="enum">
-            <enum name="FILL" value="0"/>
-            <enum name="STROKE" value="1"/>
-            <enum name="FILL_AND_STROKE" value="2"/>
-        </attr>
-        <attr name="handSecondsStroke" format="integer"/>
+  dialog.getBackgroundImage(); (returns ImageView) // gets the blurried background image
 
-    </declare-styleable>
+  dialog.getLoop();
+
+  dialog.getRadius();
+
+  dialog.getProportion();
+
+  dialog.isCancelableOutSide();
+
+  dialog.isAnimated();
+
+  dialog.isShowing();
+
+
+
+
+
+  //static methods 
+
+// 1- BlurryDialog.checkIsOpen(Activity activity); (returns boolean) // checking if this activity has any BlurryDialog opened 
+
+// 2- BlurryDialog.getOpenedDialogsCount(Activity activity); (returns int) // get the number of opened BlurryDialog
+
+// 3- BlurryDialog.removeAllOpenedDialogs(Activity activity, boolean animated); (void) // remove all dialogs that could be opened and attached to the view
+
 ```
 
 ## Versioning
 
-Version 0.1.0 // first release
+Version 1.2 // first release
 
 ## Authors
 
@@ -214,7 +213,3 @@ Version 0.1.0 // first release
 ## License
 
 This project is licensed under the MIT License
-
-## Notes
-
-This view uses redraw often , so it is a little bit resource hungry , but it doesnt seem to affect the activity after all.

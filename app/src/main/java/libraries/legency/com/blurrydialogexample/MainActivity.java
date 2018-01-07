@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import libraries.legency.com.mkblurrydialog.BlurryDialog;
 
@@ -28,42 +29,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showBlurryDialog() {
-        if(dialog == null){
-            initBlurry();
-        }
+//        if(dialog == null){
+//            initBlurry();
+//        }
+//
+//        if(dialog.isShowing()) {
+//            dialog.dismiss();
+//        }else{
+//            dialog.show();
+//        }
 
-        if(dialog.isShowing()) {
-            dialog.dismiss();
-        }else{
-            dialog.show();
-        }
+        initBlurry();
     }
 
 
     private void initBlurry(){
-        if(dialog != null){
-            return;
-        }
 
         dialog = new BlurryDialog(this);
         dialog.setCancelableOutSide(true)
-                .setLoop(5)
-                .setProportion(4)
+                .setLoop(2)
+                .setProportion(3)
                 .setAnimated(true)
-                .setRadius(20f)
-                .setTitle("your title")
-                .setMessage("Hello World");
+                .setRadius(15f)
+                .setBodyView(R.layout.other_body);
 
-//        View view = dialog.getBodyView();
-//
-//        Button button = view.findViewById(R.id.closeBtn2);
-//
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+
+        TextView title = (TextView) dialog.getBodyView().findViewById(R.id.custom_layout_title);
+        TextView message = (TextView) dialog.getBodyView().findViewById(R.id.custom_layout_message);
+
+        title.setText("My custom layout Title");
+        message.setText("My custom layout Message");
+
+        Button button = dialog.getBodyView().findViewById(R.id.closeBtn2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //your custom button click
+
+                //example
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getBackgroundImage().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // what happens when you click out side the body layout
+
+            }
+        });
+
+        dialog.show();
 
     }
 

@@ -24,7 +24,7 @@
         android:maxLines="1"
         android:lines="1"
         android:ellipsize="end"
-        android:id="@+id/title"
+        android:id="@+id/custom_layout_title"
         />
 
     <TextView
@@ -34,7 +34,7 @@
         android:textSize="16sp"
         android:text="you can inflate a resource layout to the dialog containing only the dialog and add it to the MKBlurryDialog"
         android:padding="10dp"
-        android:id="@+id/messageBody"
+        android:id="@+id/custom_layout_message"
         android:minHeight="100dp"
         />
 
