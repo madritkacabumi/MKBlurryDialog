@@ -53,33 +53,62 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Using
 
-1) XML
+1) Create Dialog object
 ```
 
-    <com.legency.madrit.mkanalogclockview.MKAnalogClockView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-
-        app:alwaysMovingHands="true"
-        app:circleEnabled="true"
-        app:secondsEnabled="true"
-        app:handSecondsColor="#000"
-        />
+ BlurryDialog dialog = new BlurryDialog(this);
+        dialog.setCancelableOutSide(true)
+                .setLoop(5)
+                .setProportion(4)
+                .setAnimated(true)
+                .setRadius(20f)
+                .setTitle("your title")
+                .setMessage("Hello World").show();
 
 ```
 
-2) Java code.
+ *** Explanation ***
+   The logic is simple , this dialog takes the root of the app and blurry it as an image. and than adds a ViewGroup container center horizontal , center vertical to your root with this blurried image.
+
+2) BlurryDialog setLoop(int loop).
 
 ```
-MKAnalogClockView mkAnalogClockView = (MKAnalogClockView) findViewById(R.id.mAnalogClock); // or
+dialog.setLoop(3);
 
-MKAnalogClockView mkAnalogClockView = new MKAnalogClockView(this);
+// sets the number of times , the background will be blurried. more is the value , more it will be blurried.
+
+```
+
+3) BlurryDialog setProportion(int proportion).
+
+```
+dialog.setProportion(4);
+
+// the background image size will be height/proportion  width/proportion , (screenshoot of your root ViewGroup).
+//  less the value higher resolution will be the screenshoot , slower wil appear the dialog , larger the valuew , more blurried and faster bitmap proccesing will be.
+// its recomended min of 3 becouse was tested in older devices.
+
+```
+
+4) BlurryDialog setRadius(float radius).
+
+```
+dialog.setRadius(15f);
+
+// sets the blurried radius for yor background. max valuew should be 25f.
+
+```
+
+
+5) Default body
+
+```
+// the dialog/alert dialog body comes with a default layout that has a title , message, and an 'ok' button.
+
 ```
 
 ### Screen
-![alt text](https://user-images.githubusercontent.com/30524631/32993891-42943c36-cd5f-11e7-8cbe-136cabf6d0f3.png)    ![alt text](https://user-images.githubusercontent.com/30524631/32993892-42b5ce82-cd5f-11e7-8d0c-164637a93096.png)
+![alt text](https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image1.png = 250x250 )  ![alt text](https://raw.githubusercontent.com/devMadrit/MKBlurryDialog/master/gitimages/image2.png = 250x250 )  
 
 
 ### Atributes or Customisation
