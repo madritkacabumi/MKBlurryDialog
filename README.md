@@ -194,11 +194,11 @@ Use other moethods
 
   //static methods 
 
-	BlurryDialog.checkIsOpen(Activity activity); (returns boolean) // checking if this activity has any BlurryDialog opened 
+  BlurryDialog.checkIsOpen(Activity activity); (returns boolean) // checking if this activity has any BlurryDialog opened 
 
-	BlurryDialog.getOpenedDialogsCount(Activity activity); (returns int) // get the number of opened BlurryDialog
+  BlurryDialog.getOpenedDialogsCount(Activity activity); (returns int) // get the number of opened BlurryDialog
 
-	BlurryDialog.removeAllOpenedDialogs(Activity activity, boolean animated); (void) // remove all dialogs that could be opened and attached to the view
+  BlurryDialog.removeAllOpenedDialogs(Activity activity, boolean animated); (void) // remove all dialogs that could be opened and attached to the view
 
 ```
 
