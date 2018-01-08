@@ -210,7 +210,7 @@ Version 1.3 // updated readme
 
 ## Authors
 
-* **Madrit Kacabumi**
+* **Madrit Kacabumi**   **Medin Piranej**
 
 ## License
 
